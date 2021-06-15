@@ -29,11 +29,11 @@ public:
 				MachinePointerSize = sizeof( UINT64 );
 				break;
 			case IMAGE_FILE_MACHINE_I386:
-				File << ".MODEL FLAT" << std::endl;
+				File << ".MODEL FLAT, STDCALL" << std::endl;
 				File << ".DATA" << std::endl;
-				File << "_g_FunctionTable DWORD " << NumberOfEntries << " dup(?)" << std::endl;
-				File << "PUBLIC _g_FunctionTable" << std::endl << std::endl;
-				FunctionTableName = "_g_FunctionTable"; // shitty calling convention decoration
+				File << "g_FunctionTable DWORD " << NumberOfEntries << " dup(?)" << std::endl;
+				File << "PUBLIC g_FunctionTable" << std::endl << std::endl;
+				FunctionTableName = "g_FunctionTable"; // shitty calling convention decoration
 				MachinePointerSize = sizeof( UINT32 );
 				break;
 			default:
